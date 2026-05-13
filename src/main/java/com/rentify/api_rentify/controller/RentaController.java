@@ -12,7 +12,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/rentas")
-@CrossOrigin(origins = "*") 
+
+@CrossOrigin(origins = "http://localhost:4200") // Para que Angular no de error de CORS
+
 public class RentaController {
 
     @Autowired
@@ -29,7 +31,9 @@ public class RentaController {
             Renta nuevaRenta = rentaService.guardarRenta(renta);
             return new ResponseEntity<>(nuevaRenta, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
         }
     }
 

@@ -35,10 +35,5 @@ public class Renta {
     @OneToMany(mappedBy = "renta", cascade = CascadeType.ALL)
     private List<DetalleRenta> detalles;
 
-    public void setFechaRenta(LocalDateTime now) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setFechaRenta'");
-    }
-
     // Getters y Setters
 }

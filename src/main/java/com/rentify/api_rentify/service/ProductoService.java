@@ -43,4 +43,21 @@ public class ProductoService {
         }
         return p;
     }
-}
+
+    public java.util.Optional<Producto> findById(Long id) {
+        return productoRepository.findById(id);
+    }
+
+    public void actualizarStock(Long id, int cantidad) {
+        if (cantidad <= 0) {
+            throw new IllegalArgumentException("La cantidad debe ser mayor a 0");
+        }
+        
+        int filasActualizadas = productoRepository.disminuirStock(id, cantidad);
+        
+        if (filasActualizadas == 0) {
+            throw new RuntimeException("No hay stock suficiente o el producto no existe");
+        }
+    }
+    
+}   

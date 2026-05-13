@@ -16,6 +16,7 @@ public class Producto {
     private Integer stockMaximo; // Capacidad total
     private Integer stockActual; // Disponibilidad real para renta
     private Double precio;
+    private String imagenUrl;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")

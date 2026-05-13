@@ -26,12 +26,12 @@ public class RentaService {
     @Transactional
     public Renta guardarRenta(Renta renta) {
         renta.setFechaRenta(LocalDateTime.now());
-        
+
         // Aseguramos la relación bidireccional para que se guarden los detalles
         if (renta.getDetalles() != null) {
             renta.getDetalles().forEach(detalle -> detalle.setRenta(renta));
         }
-        
+
         return rentaRepository.save(renta);
     }
 
@@ -45,8 +45,7 @@ public class RentaService {
                 .orElseThrow(() -> new EntityNotFoundException("No se encontró el detalle con ID: " + idDetalle));
 
         detalle.setFechaEntregaReal(LocalDateTime.now());
-        detalle.setEstadoItem(EstadoItem.DEVUELTO);// O usa un Enum si lo definiste
-        
+        detalle.setEstadoItem(EstadoItem.devuelto); // En minúsculas, tal como lo definiste
         if (comentario != null) {
             detalle.setComentarios(comentario);
         }

@@ -14,7 +14,7 @@ public class Usuario {
     private String username;
 
     @Column(nullable = false)
-    private String password; // Aquí guardaremos el hash de la clave
+    private String password; 
 
     private String nombre;
     private String email;
